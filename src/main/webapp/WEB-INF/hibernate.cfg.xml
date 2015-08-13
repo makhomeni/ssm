@@ -32,7 +32,7 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/khomeni</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/ssm_db</property>
         <property name="connection.username">root</property>
         <property name="connection.password"/>
 
@@ -51,9 +51,14 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="net.softengine.security.model.ManyTest" />
+
+        <!--Security-->
+        <mapping class="net.softengine.security.model.Group" />
         <mapping class="net.softengine.security.model.Token" />
         <mapping class="net.softengine.security.model.User" />
+
+        <!--Admin-->
+        <mapping class="net.softengine.admin.model.Teacher" />
 
     </session-factory>
 

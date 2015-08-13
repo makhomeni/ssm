@@ -1,5 +1,7 @@
 package net.softengine.admin.model;
 
+import net.softengine.security.model.User;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -13,10 +15,27 @@ import java.io.Serializable;
 
 
 
-public class Teacher implements Serializable {
+@Entity
+@DiscriminatorValue("teacher")
+public class Teacher extends User implements Serializable {
 
     private String type;
 
     private String designation;
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
 }

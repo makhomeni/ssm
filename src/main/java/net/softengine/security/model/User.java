@@ -2,6 +2,7 @@ package net.softengine.security.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "user_type",  discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("user")
+@DiscriminatorValue("admin")
 @Table(name = "SEC_USER")
 public class User implements Serializable{
     @Id
@@ -26,8 +27,8 @@ public class User implements Serializable{
     @OneToOne
     private Token token;
 
-    @OneToMany
-    private List<ManyTest> manyTestList;
+    @ManyToOne
+    private Group group;
 
     private String name;
 
@@ -41,16 +42,9 @@ public class User implements Serializable{
 
     private String email;
 
+
     public Integer getId() {
         return id;
-    }
-
-    public List<ManyTest> getManyTestList() {
-        return manyTestList;
-    }
-
-    public void setManyTestList(List<ManyTest> manyTestList) {
-        this.manyTestList = manyTestList;
     }
 
     public void setId(Integer id) {
@@ -71,6 +65,14 @@ public class User implements Serializable{
 
     public void setToken(Token token) {
         this.token = token;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     public String getName() {

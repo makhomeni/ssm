@@ -1,15 +1,18 @@
 package net.softengine.security.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class ManyTest {
+@Table(name = "SEC_GROUP")
+public class Group {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer id;
 
-    @ManyToOne
-    private User user;
+    @OneToMany
+    private List<User> userList = new ArrayList<User>();
 
     public Integer getId() {
         return id;
